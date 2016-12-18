@@ -1,0 +1,35 @@
+<head>
+  <title>chat App</title>
+ </head>
+ 
+<body>
+  <div class="container" id="container">
+    <header>
+	  
+	  {{> loginButtons}}
+	 
+	  {{#if currentUser}}
+	  <h1>Chat ({{incompleteCount}})</h1>
+	  
+	  
+	  {{/if}}
+    </header>
+    {{#if currentUser}}
+    <ul>
+      {{#each tasks}}
+        {{> task}}
+      {{/each}}
+    </ul>
+	<form class="new-task">
+        <input type="text" name="text" placeholder="Type here" />
+      </form>
+	{{/if}}
+  </div>
+</body>
+ 
+<template name="task">
+ <li class="{{#if checked}}checked{{/if}}">
+    <button class="delete">&times;</button>
+     <span class="text"><strong>{{username}}</strong> - {{text}}</span>
+  </li>
+</template>
